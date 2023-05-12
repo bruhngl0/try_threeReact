@@ -15,7 +15,7 @@ const Header = () => {
         </Button>
 
         <Button variant={"unstyled"} color={'white'} >
-            <Link to= "/exchange">Exchange</Link>
+            <Link to= "/exchanges">Exchange</Link>
         </Button>
 
         <Button variant={"unstyled"} color={'white'} >

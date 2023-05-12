@@ -11,3 +11,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </ChakraProvider>
   </React.StrictMode>,
 )
+
+
+export const server = `https://api.coingecko.com/api/v3`;
