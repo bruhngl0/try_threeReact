@@ -1,4 +1,4 @@
-import { Box, Container, HStack, Image, Radio, RadioGroup, Stat, StatArrow, StatHelpText, StatLabel, StatNumber, Text, VStack } from '@chakra-ui/react'
+import { Badge, Box, Container, HStack, Image, Progress, Radio, RadioGroup, Stat, StatArrow, StatHelpText, StatLabel, StatNumber, Text, VStack } from '@chakra-ui/react'
 import React, {useEffect, useState}from 'react'
 import Loader from './Loader'
 import { useParams } from 'react-router-dom'
@@ -85,7 +85,34 @@ const CoinDetails = () => {
                   {coin.market_data.price_change_percentage_24h}%
                 </StatHelpText>              
               </Stat>
+
+
+              <Badge fontSize={"2xl"} bgColor={"white"}>
+                {`#${coin.market_cap_rank}`}
+              </Badge>
+
+
+
+              <CustomBar 
+                high={`${currencySymbol}${coin.market_data.high_24h[currency]}`}
+                low={`${currencySymbol}${coin.market_data.low_24h[currency]}`} 
+                
+              />
+
+
+              <Box w={"full"} p={"4"}>
+
+                <Item  title ={"Max Supply"} value= {coin.market_data.max_supply}/>
+                <Item  title ={"Circulating Supply"} value= {coin.market_data.circulating_supply}/>
+                <Item  title ={"Market Cap"} value= {`${currencySymbol}${coin.market_data.market_cap[currency]}`}/>
+                <Item  title ={"All Time Low"} value= {`${currencySymbol}${coin.market_data.atl[currency]}`}/>
+                <Item  title ={"All Time High"} value= {`${currencySymbol}${coin.market_data.ath[currency]}`}/>
+
+
+              </Box>
           </VStack>
+
+         
           
 
 
@@ -97,4 +124,33 @@ const CoinDetails = () => {
   )
 }
 
+
+const Item = ({title, value} )=> (
+  <HStack justifyContent={"space-between"} w={"full"} my={"4"}> 
+
+    <Text fontFamily={"Bebas Neue"} letterSpacing={"widest"}>{title}</Text>
+    <Text fontFamily={"Bebas Neue"}>{value}</Text>
+
+
+  </HStack>
+
+)
+
+
+const CustomBar = ({high, low})=> {
+  return(
+    <VStack w={"full"}>
+      <Progress value={50} colorScheme='teal' w={"full"}/>
+      <HStack justifyContent={"space-between"} w={"full"}>
+          <Badge children={low} colorScheme='red'/>
+          <Text fontSize= {"sm"}>24H Range</Text>
+          <Badge children={high} colorScheme='green'/>
+
+
+
+      </HStack>
+    </VStack>
+
+  )
+}
 export default CoinDetails
