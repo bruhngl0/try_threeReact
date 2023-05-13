@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import { server } from '../main'
-import { Button, Container, HStack, Heading, Image, Text, VStack } from '@chakra-ui/react'
+import { Button, Container, HStack,Radio, RadioGroup,} from '@chakra-ui/react'
 
 import Loader from './Loader'
 import ErrorComponent from './ErrorComponent'
@@ -17,6 +17,8 @@ const Coins = (n) => {
 
   const currencySymbol = 
       currency === "inr" ? "₹" : currency === "eur" ? "€" : "$"
+
+      console.log(currency)
 
       const changePage = (page)=> {
         setPage(page)
@@ -51,11 +53,20 @@ const Coins = (n) => {
 
 
   return (
-    <Container maxW={'container.xl'}>
+    <Container maxW={'container.xl'} >
 
-      {loading ? <Loader /> : <>
+      {loading ? (<Loader />) :( <>
 
-      <HStack wrap={"wrap"}>
+      <RadioGroup value={currency} onChange={setCurrency} p={"8"}>
+            <HStack spacing={"4"}>
+              <Radio value={"inr"}>INR</Radio>
+              <Radio value={"usd"}>USD</Radio>
+              <Radio value={"eur"}>EUR</Radio>
+            </HStack>
+          </RadioGroup>
+
+
+      <HStack wrap={"wrap"} justifyContent={'space-evenly'}>
 
         
 
@@ -85,6 +96,7 @@ const Coins = (n) => {
               return(
                               
                 <Button
+                  key={index}
                   bgColor={'blackAlpha.900'}
                   color={'white'}
                   onClick={() => changePage(index+1)}>
@@ -103,7 +115,7 @@ const Coins = (n) => {
       </HStack>
 
 
-     </>}
+     </>)}
 
     </Container>
   )

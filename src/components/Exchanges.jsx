@@ -42,7 +42,7 @@ const Exchanges = (n) => {
 
       {loading ? <Loader /> : <>
 
-      <HStack wrap={"wrap"}>
+      <HStack wrap={"wrap"} justifyContent={'space-evenly'}>
 
         
 

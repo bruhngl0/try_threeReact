@@ -1,8 +1,19 @@
+import { Box, Spinner, VStack } from '@chakra-ui/react'
 import React from 'react'
 
 const Loader = () => {
   return (
-    <h1>loading</h1>
+    <VStack
+      h={'90vh'}
+      justifyContent={'center'}>
+        <Box transform={"scale(3)"}>
+          <Spinner size={"xl"}/>
+
+        </Box>
+
+
+    </VStack>
+    
   )
 }
 
