@@ -65,3 +65,6 @@ const Chart = ({arr=[], currency, days}) => {
 }
 
 export default Chart
+
+
+/* try it with redux toolkit to make it unique*/

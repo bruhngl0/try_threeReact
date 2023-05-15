@@ -6,7 +6,7 @@ import { Container, HStack, Heading, Image, Text, VStack } from '@chakra-ui/reac
 import Loader from './Loader'
 import ErrorComponent from './ErrorComponent'
 
-const Exchanges = (n) => {
+const Exchanges = () => {
 
   const[exchanges, setExchanges] = useState([])
   const[loading, setLoading] = useState(true)
